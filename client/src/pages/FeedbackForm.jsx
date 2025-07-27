@@ -18,7 +18,7 @@ export default function FeedbackForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await axios.post('http://localhost:5000/feedback', form);
+    await axios.post(`${import.meta.env.VITE_BACKEND_BASE_URL}/feedback`, form);
     navigate('/thankyou');
   };
 

@@ -12,7 +12,7 @@ export default function AdminDashboard() {
     const fetchData = async () => {
       const token = localStorage.getItem('token');
       try {
-        const res = await axios.get('http://localhost:5000/feedback', {
+        const res = await axios.get(`${import.meta.env.VITE_BACKEND_BASE_URL}/feedback`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         setFeedbacks(res.data);
@@ -35,7 +35,7 @@ export default function AdminDashboard() {
   const handleDelete = async (id) => {
     const token = localStorage.getItem('token');
     try {
-      await axios.delete(`http://localhost:5000/feedback/${id}`, {
+      await axios.delete(`${import.meta.env.VITE_BACKEND_BASE_URL}/feedback/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setFeedbacks(prev => prev.filter(f => f._id !== id));

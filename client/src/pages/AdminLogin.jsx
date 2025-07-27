@@ -12,7 +12,7 @@ export default function AdminLogin() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:5000/admin/login', login);
+      const res = await axios.post(`${import.meta.env.VITE_BACKEND_BASE_URL}/admin/login`, login);
       localStorage.setItem('token', res.data.token);
       navigate('/admin/dashboard');
     } catch (err) {
